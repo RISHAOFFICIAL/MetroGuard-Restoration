@@ -1,145 +1,113 @@
-# Automation Setup Status — HubSpot, Twilio, Landbot & Zapier
+# Automation Setup Status — Fully Free Stack
 ## MetroGuard Restoration | Implementation Guide
+
+**STACK:** Tally Forms + HubSpot Free CRM + Google Voice + Make.com (free tier)
+**MONTHLY COST: ~$1 (domain only)**
+**NO LANDNOT — FREE ALTERNATIVES USED INSTEAD**
 
 ---
 
 ## Overview
 
-This document provides step-by-step setup instructions for the automation infrastructure. Since we cannot access external APIs directly, this guide serves as the **implementation playbook** to hand off to an operator or set up manually.
+This guide sets up the complete automation system using 100% free tools. No paid chatbot, no monthly software costs beyond the domain name.
 
 ---
 
-## 1. HubSpot CRM Setup
+## 1. HubSpot CRM Setup (Free)
 
 ### Step 1.1: Create HubSpot Account
 1. Go to [hubspot.com](https://hubspot.com) → "Get Started Free"
-2. Use a professional email (not Gmail if possible)
+2. Use a professional email
 3. Company name: **MetroGuard Restoration**
 4. Industry: **Home Services**
-5. Company size: **1-10 employees**
 
 ### Step 1.2: Create MetroGuard Lead Pipeline
-1. Go to **Settings** → **Objects** → **Deals** → **Pipelines**
+1. Go to **Settings → Objects → Deals → Pipelines**
 2. Click **Create Pipeline**
 3. Name: **MetroGuard Lead Pipeline**
 4. Add stages:
-   - **New Lead** (default stage)
+   - **New Lead** (default)
    - **Qualified** (lead score > 40)
    - **Dispatched** (sent to contractor)
    - **Contacted** (contractor called)
-   - **Quoted** (contractor submitted quote)
+   - **Quoted** (quote submitted)
    - **Closed-Won** (job won)
    - **Closed-Lost** (no conversion)
 
 ### Step 1.3: Create Lead Scoring Properties
-1. Go to **Settings** → **Properties** → **Contacts**
-2. Create the following number properties:
+1. Go to **Settings → Properties → Contacts**
+2. Create number properties:
    - `lead_score` (default: 0)
    - `is_emergency` (yes/no)
    - `has_insurance` (yes/no)
    - `zip_valid` (yes/no)
-   - `contact_method` (phone/form)
    - `urgency_tier` (Emergency/Hot/Warm/Cold)
 
-### Step 1.4: Create Automation Workflow
-1. Go to **Automation** → **Workflows** → **Create workflow**
+### Step 1.4: Create Automation Workflows
+1. Go to **Automation → Workflows → Create workflow**
 2. Trigger: **Contact property change** (when lead_score updates)
 3. Add branches:
-   - IF `lead_score` >= 100 → Tag as "Emergency VIP", Send SMS to contractor
-   - IF `lead_score` >= 81 → Tag as "Hot Lead", Send contractor notification
-   - IF `lead_score` >= 41 → Tag as "Warm Lead", Enroll in nurture sequence
-   - IF `lead_score` < 41 → Tag as "Cold Lead", Weekly tips email
+   - IF `lead_score` >= 100 → Tag "Emergency VIP", Send SMS to contractor
+   - IF `lead_score` >= 81 → Tag "Hot Lead", Send contractor notification
+   - IF `lead_score` >= 41 → Tag "Warm Lead", Enroll in nurture sequence
+   - IF `lead_score` < 41 → Tag "Cold Lead", Weekly tips email
+
+### Step 1.5: Enable HubSpot Conversations (Free Chat Widget)
+1. Go to **Conversations → Inbox**
+2. Click **Get started** with the free Conversations tool
+3. Go to **Settings → Channels → Website** → Generate embed code
+4. Add the embed code to your website (or WordPress header)
+5. Customize the pre-chat form: capture name, email, message
 
 ---
 
-## 2. Twilio Setup
+## 2. Google Voice Setup (Free)
 
-### Step 2.1: Create Twilio Account
-1. Go to [twilio.com](https://twilio.com) → "Sign Up Free"
-2. Use work email
-3. Verify email and phone number
-4. Go to Console → get **Account SID** and **Auth Token**
+### Step 2.1: Create Google Voice Account
+1. Go to [voice.google.com](https://voice.google.com)
+2. Sign in with a Google account
+3. Search for a Detroit area code number (313, 586, 248)
+4. Click **Select** to claim the number
 
-### Step 2.2: Purchase a Phone Number
-1. Go to **Console** → **Phone Numbers** → **Buy a number**
-2. Search for a **Detroit area code (313, 586, 248)**
-3. Purchase number ($1-2/month)
-4. This becomes the **MetroGuard main line** for call tracking
+### Step 2.2: Configure Voicemail + SMS Auto-Reply
+1. In Google Voice → **Settings → Voicemail**
+2. Record a greeting: "Thank you for calling MetroGuard Restoration. All operators are currently assisting another caller. Please hold for the next available specialist."
+3. Enable **Voicemail transcription** (free)
+4. Under **SMS replies** → Set auto-reply: "Thanks for calling MetroGuard! We'll have a specialist call you back within 5 minutes. For immediate emergency help, please visit our website."
 
-### Step 2.3: Set Up Missed-Call SMS Automation
-1. Go to **Console** → **Functions** → **Create**
-2. Create a function called `missed-call-reply`:
-   ```javascript
-   exports.handler = function(context, event, callback) {
-     let twiml = new Twilio.twiml.VoiceResponse();
-     twiml.say("Thank you for calling MetroGuard Restoration. All operators are currently assisting another caller. Please hold for the next available specialist.");
-     
-     // Wait 60 seconds then hang up
-     twiml.pause({ length: 60 });
-     twiml.hangup();
-     
-     callback(null, twiml);
-   };
-   ```
-3. Set up **Studio Flow** for call handling:
-   - When call comes in → Ring main operator phone
-   - If no answer in 30 seconds → Play greeting
-   - If caller stays → Transfer to on-call specialist
-   - If caller hangs up → Trigger SMS
-
-### Step 2.4: Configure SMS Auto-Reply
-1. Go to **Console** → **Functions** → **Create**
-2. Create function `auto-reply-sms`:
-   ```javascript
-   exports.handler = function(context, event, callback) {
-     const client = context.getTwilioClient();
-     const message = event.Body;
-     
-     client.messages.create({
-       to: event.From,
-       from: process.env.TWILIO_NUMBER,
-       body: "Thanks for calling MetroGuard! We've dispatched a specialist to your area. They'll call you back within 5 minutes. For immediate help, please call our emergency line."
-     }).then(() => {
-       callback(null, "SMS sent");
-     });
-   };
-   ```
-
-### Step 2.5: Set Up Contractor Routing
-1. Go to **Console** → **Phone Numbers** → Select main number
-2. Configure **Voice** settings:
-   - Accept calls: Yes
-   - Heartbeat URL: Your operator's phone (forwarding)
-3. Set up **Concurrent calls = 1** to ensure leads don't hit busy signals
+### Step 2.3: Set Up Call Forwarding
+1. Go to **Settings → Calls → Forward calls**
+2. Forward to your personal mobile number
+3. Set "Ring simultaneously" or sequential ring with your phone first
 
 ---
 
-## 3. Tally Forms + Zapier Integration
+## 3. Tally Forms + Make.com Integration
 
 ### Step 3.1: Create Tally Form
 1. Go to [tally.so](https://tally.so) → "Sign Up Free"
-2. Create a new form called **"MetroGuard Quote Request"**
+2. Create form: **MetroGuard Quote Request**
 3. Add fields:
    - Full Name (required)
    - Phone Number (required)
    - Email (required)
-   - Service Needed (dropdown: Water Damage, Basement Waterproofing, Mold Remediation, Foundation Repair, Other)
-   - Is this an emergency? (yes/no)
-   - Are you filing an insurance claim? (yes/no/maybe)
+   - Zip Code (required)
+   - Service Needed (dropdown: Water Damage / Basement Waterproofing / Mold Remediation / Foundation Repair / Other)
+   - Is this an emergency? (Yes/No)
+   - Are you filing an insurance claim? (Yes/No/Maybe)
    - Describe the issue (textarea, optional)
-   - Address/ZIP (required)
-4. Customize thank you message: "Thank you [Name]! A MetroGuard specialist will contact you within 5 minutes."
+4. Customize thank you message: "Thank you! A MetroGuard specialist will contact you within 5 minutes."
 
-### Step 3.2: Set Up Zapier Webhook
-1. Go to [zapier.com](https://zapier.com) → Create free account
-2. Create new Zap: **Webhooks → Catch Hook**
-3. Copy the webhook URL
-4. In Tally form → **Integrations** → **Webhooks** → Add webhook URL
-5. Set trigger: When form is submitted → Send webhook
-6. Test by submitting a test form entry
+### Step 3.2: Set Up Make.com Webhook
+1. Go to [make.com](https://make.com) → "Get Started Free"
+2. Create new scenario: **MetroGuard Lead Router**
+3. Add module: **Webhooks → Custom Webhook**
+4. Click **Copy** to copy the webhook URL
+5. In Tally form → **Integrations → Webhooks** → Paste webhook URL
+6. Test by submitting a sample form entry
 
-### Step 3.3: Connect Webhook to HubSpot
-1. In Zapier → Add step: **HubSpot → Create Contact**
+### Step 3.3: Connect Make.com to HubSpot
+1. Add module: **HubSpot → Create Contact**
 2. Map fields:
    - email → Email
    - name → Full Name
@@ -147,160 +115,117 @@ This document provides step-by-step setup instructions for the automation infras
    - service_type → Service Needed
    - is_emergency → Is this an emergency?
    - has_insurance → Are you filing an insurance claim?
-   - address → Address/ZIP
-3. Add lead scoring calculation in HubSpot based on submitted data
+   - zip → Zip Code
+3. Add a **Router** module to branch by lead score
+
+### Step 3.4: Build Lead Routing Automation
+```
+TRIGGER: Webhook receives lead from Tally
+  │
+  ├─ Condition: is_emergency = YES
+  │    ├─ HubSpot: Create contact + score +100
+  │    ├─ HubSpot: Add tag "Hot Lead" + "Emergency VIP"
+  │    └─ SMS to contractor: "[City] EMERGENCY | [Name] | [Phone] | [ZIP]"
+  │
+  ├─ Condition: has_insurance = YES AND is_emergency = NO
+  │    ├─ HubSpot: Create contact + score +50
+  │    ├─ HubSpot: Add tag "Warm Lead"
+  │    └─ Enroll in 3-day email nurture
+  │
+  └─ Condition: All others
+       ├─ HubSpot: Create contact + score 20-30
+       ├─ HubSpot: Add tag "Cold Lead"
+       └─ Enroll in weekly tips sequence
+```
 
 ---
 
-## 4. Landbot AI Chatbot Setup
+## 4. HubSpot Conversations (取代 Landbot — 免费)
 
-### Step 4.1: Create Landbot Account
-1. Go to [landbot.io](https://landbot.io) → "Start Free Trial"
-2. Create new bot: **MetroGuard Virtual Assistant**
-3. Choose template: **Lead Generation Bot**
+### Step 4.1: Enable the Free Chat Widget
+1. In HubSpot → **Conversations → Inbox → Settings**
+2. Go to **Channels → Website**
+3. Click **Install** to get the tracking code
+4. Paste into WordPress site header or HTML site footer
+5. Customize the widget appearance (MetroGuard colors: Navy + Steel Silver)
 
-### Step 4.2: Build Qualification Flow
-Create the following conversation blocks:
+### Step 4.2: Configure Pre-Chat Form
+1. In HubSpot → **Conversations → Settings → Pre-chat forms**
+2. Enable pre-chat form capture
+3. Add fields: Name, Email, Phone, Message
+4. Set to: "Always show" the chat button
 
-```
-WELCOME BLOCK:
-"Hi! I'm your MetroGuard assistant. How can I help you today?"
-[Options: Get a Quote | Emergency Service | General Question]
-
-QUOTE PATH:
-Q1: "What's your name?" → Save to {{name}}
-Q2: "What's your zip code?" → Save to {{zip}}
-Q3: "Is this an emergency? (Yes = immediate response)" → If YES → Tag Emergency
-Q4: "Are you filing an insurance claim?" → Save insurance status
-Q5: "What service do you need?" → [Water Damage / Basement Waterproofing / Mold / Foundation]
-Q6: "What's your phone number?" → Save to {{phone}}
-Q7: "Describe your issue briefly" → Save to {{issue}}
-Q8: "Great! A MetroGuard specialist will call you within 5 minutes."
-
-ROUTING:
-- Emergency = YES → Send to contractor SMS immediately
-- Non-emergency → Send confirmation email + 3-day nurture
-```
-
-### Step 4.3: Configure Integration to HubSpot
-1. In Landbot → **Integrations** → **Zapier**
-2. Create zap: **Landbot → HubSpot Contact**
-3. Map chatbot responses to HubSpot contact properties
-4. Trigger lead scoring in HubSpot based on responses
-
-### Step 4.4: Add to Website
-1. In Landbot → **Share** → **Website Widget**
-2. Copy embed code
-3. Add to WordPress site via Elementor or header.php
-4. Position: Bottom-right corner, "Chat with us" button
+### Step 4.3: Set Up Routing Rules
+1. In HubSpot → **Conversations → Routing**
+2. Route all new conversations to: assign to yourself initially
+3. Set auto-reply: "Hi! Thanks for reaching out to MetroGuard. A specialist will be with you within 5 minutes. For emergencies, please call us directly."
 
 ---
 
-## 5. Make.com Automation Setup
+## 5. Contractor Notification Setup
 
-### Step 5.1: Create Make.com Account
-1. Go to [make.com](https://make.com) → "Get Started Free"
-2. Create new scenario: **MetroGuard Lead Router**
-
-### Step 5.2: Build Hot Lead Routing Automation
+### Step 5.1: SMS to Contractor (Make.com Free)
+Create this template in Make.com:
 ```
-TRIGGER: Webhook receives lead data from Tally/Zapier
-  │
-  ├─ Condition: lead_score >= 100 (Emergency)
-  │    ├─ Action: Send SMS via Twilio to contractor (format: "[City] EMERGENCY | [Name] | [Phone] | [ZIP]")
-  │    ├─ Action: Send email to contractor with lead details
-  │    └─ Action: Update HubSpot: Stage = "Dispatched", Tag = "Emergency VIP"
-  │
-  ├─ Condition: lead_score 81-99 (Hot)
-  │    ├─ Action: Send SMS to contractor
-  │    ├─ Action: Update HubSpot: Stage = "Qualified"
-  │    └─ Action: Start 3-day follow-up sequence
-  │
-  ├─ Condition: lead_score 41-80 (Warm)
-  │    ├─ Action: Update HubSpot: Stage = "New Lead", Tag = "Warm"
-  │    └─ Action: Enroll in email nurture sequence
-  │
-  └─ Condition: lead_score < 41 (Cold)
-       └─ Action: Update HubSpot: Tag = "Cold", Start weekly tips sequence
+SMS to Contractor:
+[METROGUARD LEAD] Emergency in [City]!
+Name: [Name]
+Phone: [Phone]
+ZIP: [ZIP]
+Insurance: [Y/N]
+Service: [Service]
+Score: [Score]
+Respond within 5 minutes.
 ```
 
-### Step 5.3: Set Up Contractor Notification Template
-Create the following SMS/email template:
+### Step 5.2: Email to Contractor
 ```
-SMS:
-[METROGUARD LEAD] City: [City] | Name: [Name] | Phone: [Phone] | ZIP: [ZIP] | Emergency: [Y/N] | Insurance: [Y/N] | Service: [Service] | Score: [Score] | Link: [HubSpot Link]
-
-EMAIL:
-Subject: New Lead - [Service] - [City] | Score: [Score]
+Subject: New Lead - [City] - Emergency: [Y/N]
 MetroGuard has a new [Service] lead in [City].
 Name: [Name] | Phone: [Phone] | ZIP: [ZIP]
 Emergency: [Y/N] | Insurance: [Y/N]
 Lead Score: [Score]
-[View in HubSpot →]
+[View in HubSpot → link]
 ```
-
-### Step 5.4: Set Up Email Nurture Sequences
-Create 3 sequences in HubSpot:
-
-**Hot Lead Sequence (3 emails over 3 days):**
-- Day 0: "Thanks [Name]! We're on it."
-- Day 1: "What happens next - our process"
-- Day 3: "Special offer: Free inspection this week"
-
-**Warm Lead Sequence (4 emails over 7 days):**
-- Day 0: "Thanks for contacting MetroGuard"
-- Day 2: "5 signs your [Service] needs attention"
-- Day 5: "Did you know? [Local tip]"
-- Day 7: "Limited time offer"
-
-**Cold Lead Sequence (weekly for 30 days):**
-- Week 1: "5 basement prep tips for Metro Detroit"
-- Week 2: "Seasonal flooding guide"
-- Week 3: "Insurance claim tips"
-- Week 4: "Final offer - Free consultation"
 
 ---
 
 ## 6. Testing Checklist
 
-After setup, verify each component:
+### Phone / Google Voice:
+- [ ] Call the Google Voice number from mobile
+- [ ] Verify voicemail greeting plays
+- [ ] Verify auto-reply SMS is received
+- [ ] Verify call forwarding works
 
-### Phone / Twilio:
-- [ ] Call the main line from a mobile phone
-- [ ] Verify greeting plays after 30 seconds
-- [ ] Verify SMS is received after hanging up
-- [ ] Verify call forwards to operator
-
-### Form / Zapier:
-- [ ] Submit test form entry
-- [ ] Verify webhook fires in Zapier
+### Form / Make.com / HubSpot:
+- [ ] Submit test Tally form entry
+- [ ] Verify webhook fires in Make.com
 - [ ] Verify contact appears in HubSpot
 - [ ] Verify lead scoring calculates correctly
+- [ ] Verify Hot leads get "Emergency VIP" tag
 
-### Chatbot / Landbot:
+### HubSpot Conversations Widget:
 - [ ] Visit website, click chat widget
-- [ ] Complete full qualification flow
-- [ ] Verify data appears in HubSpot
-- [ ] Verify emergency routing triggers SMS
+- [ ] Complete pre-chat form
+- [ ] Verify data appears in HubSpot inbox
 
-### Make.com:
-- [ ] Submit test lead with score > 100
-- [ ] Verify contractor receives SMS within 2 minutes
-- [ ] Submit warm lead
-- [ ] Verify email sequence starts
+### Make.com Routing:
+- [ ] Submit emergency form → verify contractor SMS sent within 2 minutes
+- [ ] Submit warm form → verify email sequence starts
+- [ ] Submit cold form → verify weekly tips sequence starts
 
 ---
 
 ## 7. Monthly Maintenance
 
-| Task | Frequency | Notes |
-| :--- | :--- | :--- |
-| Review lead scores | Weekly | Adjust scoring weights based on conversion data |
-| Check contractor response times | Weekly | Alert if > 5 min response |
-| Clean HubSpot pipeline | Monthly | Archive closed-lost leads |
-| Review Twilio usage | Monthly | Adjust calling patterns if costs too high |
-| Update chatbot | Monthly | Add new responses based on common questions |
-| Check for spam leads | Weekly | Block obviously fake submissions |
+| Task | Frequency |
+| :--- | :--- |
+| Review lead scores | Weekly |
+| Check contractor response times | Weekly |
+| Clean HubSpot pipeline | Monthly |
+| Update Google Voice voicemail | As needed |
+| Check for spam leads | Weekly |
 
 ---
 
@@ -308,22 +233,21 @@ After setup, verify each component:
 
 ### Day 1:
 - [ ] Create HubSpot account + pipeline + lead scoring properties
-- [ ] Create Tally form and test webhook
+- [ ] Create Tally form and connect to Make.com webhook
 
 ### Day 2:
-- [ ] Create Twilio account + purchase Detroit number
-- [ ] Set up missed-call Studio flow
-- [ ] Create Zapier integration: Tally → HubSpot
+- [ ] Set up Google Voice number + voicemail greeting + SMS auto-reply
+- [ ] Set up Make.com scenario: Tally → HubSpot → Contractor routing
 
 ### Day 3:
-- [ ] Create Landbot account + build chatbot
-- [ ] Create Make.com account + build lead routing
+- [ ] Enable HubSpot Conversations widget (free chat)
+- [ ] Build email nurture sequences in HubSpot
 - [ ] Test full flow end-to-end
 
 ---
 
 ## Status
 
-**Current State:** This document serves as the **setup playbook**. Actual account creation and configuration needs to be performed by an operator with access to the respective platforms.
-
-**Next Step:** Hand off to operator with this guide to complete the actual setup within 3-5 business days.
+**Stack: 100% free. Total monthly cost: ~$1/mo (domain only)**
+**No Landbot, no Twilio, no paid chatbot required.**
+**Setup time: 3-5 days for a non-technical operator.**

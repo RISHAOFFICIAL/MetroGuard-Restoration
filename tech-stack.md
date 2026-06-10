@@ -6,12 +6,13 @@
 ## 1. Stack Philosophy
 
 **Guiding Principles:**
-- Minimize monthly overhead (< $300/mo start)
+- Minimize monthly overhead (under $30/mo to start)
 - Maximize automation so the system runs itself
 - Use no-code/low-code tools for fast iteration
 - Scale via adding city/niche sites, not engineering
+- **100% free software stack — no paid chatbot required**
 
-**Core Stack:** 80% of lead gen sites in this range run on: a page builder + CRM + call tracking + AI chatbot + zapier/make.
+**Core Stack:** Carrd/WordPress + HubSpot Free CRM + Google Voice + Tally Forms + Make.com (free tier)
 
 ---
 
@@ -21,87 +22,81 @@
 
 | Option | Cost | Best For |
 | :--- | :--- | :--- |
-| **Carrd.co** | $19/mo | Fast, beautiful one-page landing site. Perfect for MVP/Emergency Dispatch page. |
+| **Carrd.co** | $19/mo | Fast, beautiful one-page landing site. Emergency Dispatch page. |
 | **WordPress + Elementor** | $30-50/mo | Full multi-page site with blog. More SEO power. |
-| **Webflow** | $14/mo (CMS plan) | Premium design, more complex SEO. Higher learning curve. |
+| **GitHub Pages** | $0 | Free static hosting for HTML files |
 
 **Recommendation for MetroGuard:**
-- **Phase 1:** Carrd for the Emergency Dispatch page + a fast WordPress install for the main site.
-- **Phase 2:** Full WordPress site with city pages and blog.
-- **Domain:** metroguardmi.com (or metroguardrestoration.com — $12/yr via Namecheap)
-
-**Why Carrd first?** Speed to market. A beautiful emergency landing page can be live in 2 hours. This is the #1 priority for the 30-day sprint.
+- **Phase 1:** Carrd for the Emergency Dispatch page + GitHub Pages for the full HTML site (FREE)
+- **Phase 2:** WordPress site with city pages and blog when revenue justifies $30/mo hosting
+- **Domain:** metroguardmi.com ($12/yr via Namecheap)
 
 ### 2.2 Call Tracking & Phone System
 
 | Tool | Cost | Purpose |
 | :--- | :--- | :--- |
-| **Twilio** | $1/min + $0.0085/sms | Full phone control, missed-call texts, IVR routing |
-| **CallRail** | $49/mo starter | Call tracking, recording, Google Ads integration |
-| **Google Voice** | $0 | Single tracking number for startup phase |
+| **Google Voice** | $0 | Free tracking number, SMS, voicemail |
+| **Twilio** | $1/min + $0.0085/sms | Upgrade when call volume grows |
+| **CallRail** | $49/mo starter | Full call tracking and attribution |
 
 **Recommendation:**
-- **Startup:** Google Voice (free) → upgrade to Twilio when calls start flowing.
-- **Growth:** Twilio + CallRail combo for full call attribution by source.
-
-**Key Automation:** Missed calls trigger an SMS auto-responder: "Thanks for calling MetroGuard! We'll have a specialist call you back within 5 minutes. For immediate help, text BACK to this number."
+- **Startup:** Google Voice (completely free) → upgrade to Twilio when calls start flowing
+- Free SMS auto-reply on missed calls via Google Voice voicemail greeting
 
 ### 2.3 CRM & Lead Management
 
 | Tool | Cost | Purpose |
 | :--- | :--- | :--- |
-| **HubSpot Free CRM** | $0 | Contact management, lead pipelines, email tracking |
-| **Airtable** | $10/mo | Custom lead tracking, more flexible than CRM for small ops |
-| **Google Sheets** | $0 | Simple lead log, works with Zapier |
+| **HubSpot Free CRM** | $0 | Contact management, lead pipelines, email tracking, lead scoring |
+| **Airtable** | $10/mo | Custom lead tracking (phase 2) |
+| **Google Sheets** | $0 | Simple lead log |
 
-**Recommendation:**
-- **Phase 1:** HubSpot Free (unlimited contacts, pipeline view, email tracking).
-- **Phase 2:** Airtable for more complex automation and reporting.
-- **Why HubSpot:** It's free, has great lead scoring, and contractors are familiar with it.
+**Why HubSpot:** Free forever, unlimited contacts, native email sequences, lead scoring, pipeline view — everything we need at zero cost.
 
-### 2.4 AI Chatbot / Virtual Receptionist
+### 2.4 Lead Qualification (取代 Landbot 的免费方案)
 
 | Tool | Cost | Purpose |
 | :--- | :--- | :--- |
-| **Landbot.io** | $30/mo | No-code chatbot for website, Qualifies leads 24/7 |
-| **Voiceflow** | $0-80/mo | Voice + text AI agent, More powerful for phone |
-| **Botpress** | $0 | Open-source, self-hosted AI chatbot |
+| **HubSpot Conversations (free embed)** | $0 | HubSpot's built-in chat widget — qualifies leads 24/7 |
+| **Tally Forms (conversational mode)** | $0 | Conversational form flow — same UX as chatbot |
+| **Botpress** | $0 | Open-source chatbot (self-hosted, zero cost) |
+| **Custom HTML/CSS bot** | $0 | Simple 5-question popup bot |
 
-**Recommendation:**
-- **Phase 1:** Landbot (easiest setup, drag-and-drop builder) on the quote request page.
-- **Phase 2:** Voiceflow for an AI receptionist that answers the phone and routes leads.
-- **Key Feature:** AI chatbot should ask: "What's your address?", "Is this an emergency?", "Are you filing an insurance claim?" to pre-qualify leads before routing to contractors.
+**Recommendation — Fully Free Qualification Flow:**
+1. **Tally conversational forms** → capture name, ZIP, emergency, insurance, phone, issue
+2. **HubSpot Conversations widget** → free embedded chat, pre-qualifies visitors
+3. **HubSpot lead scoring** → automatically tiers Hot/Warm/Cold
+
+No Landbot. No $30/mo. The Tally + HubSpot combo does everything Landbot did — for free.
 
 ### 2.5 Form Automation
 
 | Tool | Cost | Purpose |
 | :--- | :--- | :--- |
-| **Tally Forms** | $0/mo | Free, beautiful, captures leads to email |
-| **Jotform** | $0/mo | More integrations, HIPAA-friendly |
-| **Typeform** | $0/mo | Conversational forms, Higher conversion |
-| **Native HTML Forms** | $0 | Free, connected to Zapier via webhooks |
+| **Tally Forms** | $0/mo | Free, beautiful, conversational forms |
+| **Jotform** | $0/mo | More integrations |
+| **Native HTML Forms** | $0 | Free, connected to Make.com via webhook |
 
-**Recommendation:** Tally (free tier is generous) + Zapier webhook to push form data into HubSpot CRM.
+**Recommendation:** Tally (free tier is generous) + Make.com webhook to push form data into HubSpot CRM.
 
 ### 2.6 SMS Automation
 
 | Tool | Cost | Purpose |
 | :--- | :--- | :--- |
-| **Twilio** | $0.0085/sms | Outbound SMS, automation |
-| **Gush** | $30/mo | Simple SMS for small teams |
-| **Make.com** | $10/mo | Automation platform (Zapier alternative) |
+| **Google Voice** | $0 | Free SMS for notifications |
+| **Make.com (free tier)** | $0/mo | Up to 1,000 ops/mo — SMS automation via SMS apps |
+| **Twilio** | $0.0085/sms | Upgrade when volume grows |
 
-**Recommendation:** Twilio + Make.com (more flexible than Zapier at same price).
+**Recommendation:** Google Voice (free) + Make.com free tier for SMS automation. Keep it at zero cost.
 
 ### 2.7 Email Automation
 
 | Tool | Cost | Purpose |
 | :--- | :--- | :--- |
-| **HubSpot Email** | $0 | Included with free CRM |
-| **Mailchimp** | $0/mo | Free up to 500 contacts, Basic automations |
-| **ConvertKit** | $0/mo | Better for blogging, creators |
+| **HubSpot Email** | $0 | Included with free CRM — email sequences, follow-ups |
+| **Mailchimp** | $0/mo | Free up to 500 contacts |
 
-**Recommendation:** HubSpot Free (already in stack) — it handles email follow-up sequences and is natively connected to the CRM.
+**Recommendation:** HubSpot Free (already in stack) — handles all email follow-up sequences natively.
 
 ### 2.8 Marketing & SEO Tools
 
@@ -109,68 +104,70 @@
 | :--- | :--- | :--- |
 | **Google Search Console** | $0 | SEO performance monitoring |
 | **Google Analytics 4** | $0 | Traffic and conversion tracking |
-| **Ubersuggest** | $12/mo | Keyword research, SEO auditing |
-| **Brightlocal** | $48/mo | Local SEO citations and rank tracking |
-| **Screaming Frog** | $0 (crawl 500 URLs) | Technical SEO audit |
+| **Ubersuggest** | $12/mo | Keyword research |
+| **Brightlocal** | $48/mo | Local SEO citations (phase 2+) |
+| **Screaming Frog** | $0 (500 URL crawl) | Technical SEO audit |
 
-**Recommendation:**
-- Start with Google tools (free). Add Ubersuggest when you need keyword research. Add Brightlocal when you're ready to scale local SEO across multiple cities.
+**Recommendation:** Start with Google tools (free). Add Ubersuggest at $12/mo when ready.
 
 ### 2.9 Payment / Billing
 
 | Tool | Cost | Purpose |
 | :--- | :--- | :--- |
-| **Stripe** | 2.9% + $0.30 | Accept payments from contractors |
-| **Wave** | $0 | Free invoicing for small businesses |
+| **Wave** | $0 | Free invoicing for contractor payments |
+| **Stripe** | 2.9% + $0.30 | Recurring payments when ready |
 
-**Recommendation:** Wave for invoicing (free, professional). Stripe when you need recurring payments.
+**Recommendation:** Wave (free, professional). Stripe for recurring billing later.
 
 ---
 
-## 3. Full Monthly Cost Estimate
+## 3. Full Monthly Cost Estimate — FREE STACK
 
 | Category | Tool | Monthly Cost |
 | :--- | :--- | :--- |
-| Website | Carrd + WordPress | $19 + $10 = $29 |
-| Domain | Namecheap | $1/mo |
-| Call Tracking | Google Voice (start) / Twilio (growth) | $0-20 |
-| CRM | HubSpot Free | $0 |
-| AI Chatbot | Landbot | $30 |
-| Forms | Tally | $0 |
-| SMS/Automation | Twilio + Make.com | $30 + $10 = $40 |
-| SEO Tools | Ubersuggest | $12 |
-| **Total** | | **$100-150/mo** |
+| Website Hosting | GitHub Pages | **$0** |
+| Domain | Namecheap | **$1/mo** |
+| Call Tracking | Google Voice | **$0** |
+| CRM | HubSpot Free | **$0** |
+| Lead Qualification | HubSpot Conversations + Tally | **$0** |
+| Forms | Tally | **$0** |
+| SMS Automation | Google Voice + Make.com | **$0** |
+| Email | HubSpot Free | **$0** |
+| **Total** | | **~$1-5/mo** |
 
-This is extremely lean. The main costs come online once you have revenue to justify them.
+This is a truly free stack. The only real expense is the domain at $1/mo.
+Once the site generates revenue, upgrade to Carrd ($19/mo) for a better-looking site.
 
 ---
 
 ## 4. Implementation Priority Order
 
-### Immediate (Day 1-7):
+### Day 1-3:
 1. Register domain (metroguardmi.com)
-2. Set up Carrd emergency page with click-to-call
+2. Upload HTML files to GitHub Pages (FREE hosting)
 3. Get a Google Voice tracking number
-4. Set up HubSpot Free CRM
+4. Set up HubSpot Free CRM + pipeline + lead scoring
+
+### Day 4-7:
+5. Set up Tally form + Make.com webhook → HubSpot
+6. Configure Google Voice voicemail + SMS auto-reply
+7. Enable HubSpot Conversations widget on site
+8. Set up Google Business Profile
 
 ### Week 2:
-5. Set up Tally form + Zapier webhook
-6. Set up Twilio for missed-call SMS
-7. Configure Landbot on quote page
-
-### Week 3-4:
-8. Add Ubersuggest for keyword tracking
-9. Set up Google Business Profile
-10. Configure Google Analytics 4
+9. Build email nurture sequences in HubSpot (Hot/Warm/Cold)
+10. Set up Make.com automation for contractor SMS routing
+11. Test full flow end-to-end
 
 ---
 
 ## 5. Scaling Playbook
 
-When monthly revenue hits $5K+, upgrade:
-- WordPress (from Carrd) → Better SEO and more pages
-- CallRail ($49/mo) → Better attribution than Twilio alone
+When monthly revenue hits $5K+, optional upgrades:
+- Carrd ($19/mo) → Better-looking emergency page
+- WordPress hosting ($30/mo) → Full multi-page site
+- Twilio ($20/mo) → Better call tracking
+- Ubersuggest ($12/mo) → Keyword research
 - Brightlocal ($48/mo) → Multi-city citation management
-- HubSpot Starter ($50/mo) → More CRM power
 
-The goal is to keep fixed costs under $300/mo while revenue scales to $10K-20K/mo.
+The goal: keep fixed costs under $30/mo while revenue scales to $10K-20K/mo.
