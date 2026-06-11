@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MetroGuard Restoration | 24/7 Emergency Water Damage Response Metro Detroit</title>
+    <meta name="description" content="Metro Detroit's premier 24/7 emergency water damage response. On-site in 60 minutes or less. We handle your insurance claim from start to finish. Detroit Built. Detroit Dedicated.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --navy: #1B365D; --navy-dark: #0f2340;
+            --steel: #A2AAAD; --steel-light: #d4d8da;
+            --white: #ffffff; --orange: #FF5F00; --orange-hover: #e54a00;
+            --grey-light: #f5f7f8;
+        }
+        body { font-family: 'Montserrat', sans-serif; background: var(--white); color: #222; line-height: 1.6; }
+        .header { background: var(--navy); padding: 15px 0; position: sticky; top: 0; z-index: 1000; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-icon { width: 48px; height: 48px; }
+        .logo-text { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 24px; color: var(--white); text-transform: uppercase; letter-spacing: 1px; }
+        .logo-text span { color: var(--orange); }
+        .header-cta { display: flex; align-items: center; gap: 20px; }
+        .phone-link { color: var(--white); text-decoration: none; font-weight: 700; font-size: 18px; display: flex; align-items: center; gap: 8px; }
+        .nav-menu { display: flex; gap: 30px; align-items: center; }
+        .nav-menu a { color: var(--white); text-decoration: none; font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; transition: color 0.3s; }
+        .nav-menu a:hover { color: var(--orange); }
+        .nav-cta { background: var(--orange); color: var(--white) !important; padding: 10px 20px; border-radius: 6px; }
+        .nav-cta:hover { background: var(--orange-hover); }
+        .hero { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%); padding: 100px 0 120px; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(255,95,0,0.15) 0%, transparent 70%); border-radius: 50%; }
+        .hero-content { position: relative; z-index: 2; text-align: center; max-width: 900px; margin: 0 auto; }
+        .emergency-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--orange); color: var(--white); padding: 8px 20px; border-radius: 50px; font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 30px; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        .pulse-dot { width: 10px; height: 10px; background: var(--white); border-radius: 50%; animation: blink 1s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+        .hero h1 { font-size: 56px; font-weight: 900; color: var(--white); margin-bottom: 20px; line-height: 1.1; text-transform: uppercase; }
+        .hero h1 span { color: var(--orange); }
+        .hero-sub { font-size: 20px; color: var(--steel-light); margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto; }
+        .hero-ctas { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+        .btn { display: inline-flex; align-items: center; gap: 10px; padding: 18px 36px; border-radius: 8px; font-weight: 700; font-size: 16px; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; cursor: pointer; border: none; }
+        .btn-primary { background: var(--orange); color: var(--white); }
+        .btn-primary:hover { background: var(--orange-hover); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(255,95,0,0.3); }
+        .btn-secondary { background: transparent; color: var(--white); border: 2px solid var(--white); }
+        .btn-secondary:hover { background: var(--white); color: var(--navy); }
+        .guarantee-bar { background: var(--white); padding: 40px 0; border-bottom: 1px solid var(--steel-light); }
+        .guarantee-content { display: flex; align-items: center; justify-content: center; gap: 60px; flex-wrap: wrap; }
+        .guarantee-item { display: flex; align-items: center; gap: 15px; }
+        .guarantee-icon { width: 50px; height: 50px; background: var(--navy); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .guarantee-icon svg { width: 24px; height: 24px; fill: var(--white); }
+        .guarantee-text strong { display: block; font-size: 28px; color: var(--navy); }
+        .guarantee-text span { font-size: 14px; color: #666; }
+        .section { padding: 80px 0; }
+        .section-grey { background: var(--grey-light); }
+        .section-dark { background: var(--navy); }
+        .section-dark .section-header h2 { color: var(--white); }
+        .section-dark .section-header p { color: var(--steel-light); }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 42px; font-weight: 900; color: var(--navy); text-transform: uppercase; margin-bottom: 15px; }
+        .section-header p { font-size: 18px; color: #666; max-width: 600px; margin: 0 auto; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .service-card { background: var(--white); border-radius: 12px; padding: 35px; box-shadow: 0 5px 30px rgba(0,0,0,0.08); transition: all 0.3s ease; border: 2px solid transparent; }
+        .service-card:hover { transform: translateY(-5px); border-color: var(--orange); box-shadow: 0 15px 50px rgba(0,0,0,0.12); }
+        .service-icon { width: 60px; height: 60px; background: linear-gradient(135deg, var(--navy), var(--navy-dark)); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+        .service-icon svg { width: 30px; height: 30px; fill: var(--white); }
+        .service-card h3 { font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 12px; }
+        .service-card p { font-size: 15px; color: #666; margin-bottom: 20px; }
+        .service-link { color: var(--orange); font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 5px; font-size: 14px; }
+        .service-link:hover { text-decoration: underline; }
+        .areas-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .area-btn { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: var(--white); padding: 15px 20px; border-radius: 8px; text-align: center; text-decoration: none; font-weight: 700; font-size: 15px; transition: all 0.3s ease; }
+        .area-btn:hover { background: var(--orange); border-color: var(--orange); transform: translateY(-2px); }
+        .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin: 60px 0; }
+        .stat-item { text-align: center; }
+        .stat-number { font-size: 56px; font-weight: 900; color: var(--orange); display: block; }
+        .stat-label { font-size: 16px; color: var(--steel-light); text-transform: uppercase; font-weight: 700; }
+        .trust-grid { display: flex; justify-content: center; align-items: center; gap: 60px; flex-wrap: wrap; }
+        .trust-item { text-align: center; }
+        .trust-badge { width: 80px; height: 80px; background: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); font-size: 32px; }
+        .trust-item span { font-weight: 700; color: var(--navy); font-size: 14px; }
+        .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .testimonial-card { background: var(--white); border-radius: 12px; padding: 35px; box-shadow: 0 5px 30px rgba(0,0,0,0.08); }
+        .testimonial-stars { color: #f5a623; font-size: 20px; margin-bottom: 15px; }
+        .testimonial-text { font-size: 16px; color: #555; margin-bottom: 20px; font-style: italic; }
+        .testimonial-author { font-weight: 700; color: var(--navy); }
+        .testimonial-location { font-size: 14px; color: #888; }
+        .form-wrapper { max-width: 600px; margin: 0 auto; background: var(--grey-light); border-radius: 16px; padding: 50px; box-shadow: 0 10px 50px rgba(0,0,0,0.1); }
+        .form-wrapper h2 { font-size: 32px; font-weight: 900; color: var(--navy); text-align: center; margin-bottom: 10px; }
+        .form-sub { text-align: center; color: #666; margin-bottom: 35px; font-size: 16px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-weight: 700; font-size: 14px; color: var(--navy); margin-bottom: 8px; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 14px 18px; border: 2px solid var(--steel-light); border-radius: 8px; font-size: 16px; font-family: 'Montserrat', sans-serif; transition: border-color 0.3s ease; background: var(--white); }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--orange); }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .checkbox-group { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 25px; }
+        .checkbox-group input { width: auto; margin-top: 3px; }
+        .checkbox-group label { font-size: 14px; color: #555; }
+        .form-submit { width: 100%; padding: 18px; background: var(--orange); color: var(--white); border: none; border-radius: 8px; font-size: 18px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: all 0.3s ease; }
+        .form-submit:hover { background: var(--orange-hover); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(255,95,0,0.3); }
+        .footer { background: var(--navy-dark); color: var(--steel-light); padding: 60px 0 30px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-col h4 { color: var(--white); font-size: 16px; font-weight: 700; margin-bottom: 20px; text-transform: uppercase; }
+        .footer-col p, .footer-col a { font-size: 15px; color: var(--steel); text-decoration: none; line-height: 1.8; }
+        .footer-col a:hover { color: var(--orange); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; text-align: center; font-size: 14px; }
+        .floating-cta { position: fixed; bottom: 20px; right: 20px; z-index: 999; }
+        .floating-btn { display: flex; align-items: center; gap: 10px; background: var(--orange); color: var(--white); padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 16px; box-shadow: 0 5px 25px rgba(255,95,0,0.4); transition: all 0.3s ease; }
+        .floating-btn:hover { transform: scale(1.05); box-shadow: 0 10px 40px rgba(255,95,0,0.5); }
+        .content-block { padding: 60px 0; }
+        .content-block h2 { font-size: 36px; font-weight: 900; color: var(--navy); margin-bottom: 20px; }
+        .content-block p { font-size: 17px; color: #555; margin-bottom: 20px; max-width: 800px; }
+        .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; }
+        .content-card { background: var(--grey-light); border-radius: 12px; padding: 30px; }
+        .content-card h3 { font-size: 22px; font-weight: 700; color: var(--navy); margin-bottom: 15px; }
+        .content-card ul { list-style: none; }
+        .content-card ul li { padding: 8px 0; border-bottom: 1px solid var(--steel-light); display: flex; align-items: center; gap: 10px; }
+        .content-card ul li::before { content: '✓'; color: var(--orange); font-weight: 700; }
+        .cta-section { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%); padding: 80px 0; text-align: center; }
+        .cta-section h2 { font-size: 42px; font-weight: 900; color: var(--white); margin-bottom: 20px; }
+        .cta-section p { font-size: 18px; color: var(--steel-light); margin-bottom: 40px; }
+        @media (max-width: 768px) {
+            .nav-menu { display: none; }
+            .hero h1 { font-size: 36px; }
+            .hero-sub { font-size: 16px; }
+            .hero-ctas { flex-direction: column; align-items: center; }
+            .guarantee-content { gap: 30px; }
+            .form-row { grid-template-columns: 1fr; }
+            .form-wrapper { padding: 30px 20px; }
+            .section-header h2 { font-size: 32px; }
+            .stats-row { grid-template-columns: 1fr 1fr; }
+            .content-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="homepage.html" class="logo">
+                    <svg class="logo-icon" viewBox="0 0 48 48" fill="none"><path d="M24 4L6 14v20l18 10 18-10V14L24 4z" fill="#1B365D" stroke="#FF5F00" stroke-width="2"/><path d="M24 12L12 18v12l12 6 12-6V18L24 12z" fill="#FF5F00"/><path d="M24 20c-2 0-4 2-4 4s2 4 4 4 4-2 4-4-2-4-4-4z" fill="#fff"/></svg>
+                    <span class="logo-text">Metro<span>Guard</span></span>
+                </a>
+                <nav class="nav-menu">
+                    <a href="homepage.html">Home</a>
+                    <a href="service-water-damage.html">Services</a>
+                    <a href="city-detroit.html">Service Areas</a>
+                    <a href="about.html">About</a>
+                    <a href="emergency-dispatch.html" class="nav-cta">24/7 Emergency</a>
+                </nav>
+                <a href="tel:+13135551234" class="phone-link">(313) 555-1234</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="emergency-badge"><span class="pulse-dot"></span> DISPATCHER ONLINE — TEAMS AVAILABLE</div>
+                <h1>Metro Detroit's Premier<br><span>24/7 Emergency</span><br>Water Damage Response</h1>
+                <p class="hero-sub">On-site in 60 minutes or less. We handle your insurance claim from start to finish so you can focus on getting your life back to normal. Detroit Built. Detroit Dedicated.</p>
+                <div class="hero-ctas">
+                    <a href="tel:+13135551234" class="btn btn-primary">Call Now: (313) 555-1234</a>
+                    <a href="quote-form.html" class="btn btn-secondary">Get Your Free Rapid Estimate</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="guarantee-bar">
+        <div class="container">
+            <div class="guarantee-content">
+                <div class="guarantee-item">
+                    <div class="guarantee-icon"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg></div>
+                    <div class="guarantee-text"><strong>60 MIN</strong><span>Response Guarantee</span></div>
+                </div>
+                <div class="guarantee-item">
+                    <div class="guarantee-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></div>
+                    <div class="guarantee-text"><strong>$0</strong><span>Out-of-Pocket Costs</span></div>
+                </div>
+                <div class="guarantee-item">
+                    <div class="guarantee-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
+                    <div class="guarantee-text"><strong>IICRC</strong><span>Certified Firm</span></div>
+                </div>
+                <div class="guarantee-item">
+                    <div class="guarantee-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg></div>
+                    <div class="guarantee-text"><strong>BBB</strong><span>Accredited A+</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Emergency Services</h2>
+                <p>Fast, professional solutions for every water emergency — from extraction to full restoration</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 2c-5.33 4.55-8 8.48-8 11.8 0 4.98 3.8 8.2 8 8.2s8-3.22 8-8.2c0-3.32-2.67-7.25-8-11.8zm0 18c-3.35 0-6-2.57-6-6.2 0-2.34 1.95-5.44 6-9.14 4.05 3.7 6 6.79 6 9.14 0 3.63-2.65 6.2-6 6.2z"/></svg></div>
+                    <h3>Water Extraction & Drying</h3>
+                    <p>Industrial-grade extraction and structural drying to stop damage in its tracks. State-of-the-art moisture mapping technology.</p>
+                    <a href="service-water-damage.html" class="service-link">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3zm5 15h-2v-6H9v6H7v-7.81l5-4.5 5 4.5V18z"/></svg></div>
+                    <h3>Basement Waterproofing</h3>
+                    <p>Permanent engineered solutions to keep your basement bone-dry. Lifetime transferable warranty on all installations.</p>
+                    <a href="service-basement-waterproofing.html" class="service-link">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg></div>
+                    <h3>Sump Pump Service</h3>
+                    <p>Installation, repair, and battery backup systems. Zoeller and Liberty Pumps — the industry's most trusted brands.</p>
+                    <a href="service-sump-pump.html" class="service-link">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M10.5 2c-2.5 2.5-2.5 6.5 0 9l6 6-1.5 1.5-5.5-5.5c-2.5-2.5-2.5-6.5 0-9l.5-.5-.5-.5zM19 12c0-3.87-3.13-7-7-7s-7 3.13-7 7 3.13 7 7 7 7-3.13 7-7z"/></svg></div>
+                    <h3>Mold Remediation</h3>
+                    <p>Advanced containment and filtration techniques. Hospital-grade antimicrobials. Air quality clearance guarantee.</p>
+                    <a href="service-mold.html" class="service-link">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M17.66 8L12 2.35 6.34 8C4.78 9.56 4 11.64 4 13.64s.78 4.11 2.34 5.67 3.61 2.35 5.66 2.35 4.1-.79 5.66-2.35S20 15.64 20 13.64 19.22 9.56 17.66 8z"/></svg></div>
+                    <h3>Foundation Repair</h3>
+                    <p>Permanent stabilization solutions for cracked walls, bowing foundations, and structural distress. Engineer-approved methods.</p>
+                    <a href="service-foundation.html" class="service-link">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 5.9c1.16 0 2.1.94 2.1 2.1s-.94 2.1-2.1 2.1S9.9 9.16 9.9 8s.94-2.1 2.1-2.1m0 9c2.97 0 6.1 1.46 6.1 2.1v1.1H5.9V17c0-.64 3.13-2.1 6.1-2.1M12 4C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4z"/></svg></div>
+                    <h3>24/7 Emergency Response</h3>
+                    <p>Standing by around the clock for any water emergency. Licensed, bonded, and insured for your protection.</p>
+                    <a href="emergency-dispatch.html" class="service-link">Learn More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="stats-row">
+                <div class="stat-item"><span class="stat-number">500+</span><span class="stat-label">Jobs Completed</span></div>
+                <div class="stat-item"><span class="stat-number">60</span><span class="stat-label">Min Response</span></div>
+                <div class="stat-item"><span class="stat-number">100%</span><span class="stat-label">Insurance Success</span></div>
+                <div class="stat-item"><span class="stat-number">5</span><span class="stat-label">Star Reviews</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-grey">
+        <div class="container">
+            <div class="section-header">
+                <h2>Serving All of Metro Detroit</h2>
+                <p>Fast response to every city and neighborhood across Southeast Michigan</p>
+            </div>
+            <div class="areas-grid">
+                <a href="city-detroit.html" class="area-btn" style="background: var(--navy); border-color: var(--navy);">Detroit</a>
+                <a href="city-dearborn.html" class="area-btn">Dearborn</a>
+                <a href="city-warren.html" class="area-btn">Warren</a>
+                <a href="city-sterling-heights.html" class="area-btn">Sterling Heights</a>
+                <a href="city-troy.html" class="area-btn">Troy</a>
+                <a href="city-royal-oak.html" class="area-btn">Royal Oak</a>
+                <a href="city-birmingham.html" class="area-btn">Birmingham</a>
+                <a href="city-grosse-pointe.html" class="area-btn">Grosse Pointe</a>
+                <a href="city-livonia.html" class="area-btn">Livonia</a>
+                <a href="city-dearborn-heights.html" class="area-btn">Dearborn Heights</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Need Help NOW? We're On the Way.</h2>
+            <p>Don't wait — every minute counts when water damage strikes. MetroGuard is standing by 24/7.</p>
+            <a href="tel:+13135551234" class="btn btn-primary" style="font-size: 20px; padding: 20px 50px;">Call (313) 555-1234</a>
+        </div>
+    </section>
+
+    <section class="section section-grey">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Metro Detroit Trusts MetroGuard</h2>
+                <p>Real reviews from real homeowners across Southeast Michigan</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"They were at my house in 45 minutes when my basement flooded. Helped me deal with my insurance company directly. Couldn't have done it without them."</p>
+                    <div class="testimonial-author">— Michael R.</div>
+                    <div class="testimonial-location">Detroit</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Professional, fast, and honest. They showed up, assessed the damage, and had water extraction done within hours. Highly recommend for any water emergency."</p>
+                    <div class="testimonial-author">— Sarah T.</div>
+                    <div class="testimonial-location">Troy</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"After a storm flooded our finished basement, MetroGuard had crews here fast. They walked us through the insurance claim process and everything was covered."</p>
+                    <div class="testimonial-author">— David K.</div>
+                    <div class="testimonial-location">Royal Oak</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="trust-grid">
+                <div class="trust-item"><div class="trust-badge">🛡️</div><span>IICRC Certified</span></div>
+                <div class="trust-item"><div class="trust-badge">✓</div><span>BBB Accredited A+</span></div>
+                <div class="trust-item"><div class="trust-badge">🏛️</div><span>Licensed & Insured</span></div>
+                <div class="trust-item"><div class="trust-badge">⭐</div><span>500+ 5-Star Reviews</span></div>
+                <div class="trust-item"><div class="trust-badge">🔒</div><span>Lead-Safe Certified</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="form-wrapper" id="quote">
+                <h2>Get Your Free Rapid Estimate</h2>
+                <p class="form-sub">One of our Metro Detroit experts will contact you within 15 minutes</p>
+                <form id="quoteForm">
+                    <div class="form-row">
+                        <div class="form-group"><label for="name">Full Name *</label><input type="text" id="name" name="name" placeholder="John Smith" required></div>
+                        <div class="form-group"><label for="phone">Phone Number *</label><input type="tel" id="phone" name="phone" placeholder="(313) 555-1234" required></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group"><label for="email">Email Address *</label><input type="email" id="email" name="email" placeholder="john@email.com" required></div>
+                        <div class="form-group"><label for="service">Service Needed *</label><select id="service" name="service" required><option value="">Select a service...</option><option value="water-extraction">Water Extraction & Drying</option><option value="basement-waterproofing">Basement Waterproofing</option><option value="sump-pump">Sump Pump Service</option><option value="mold">Mold Remediation</option><option value="foundation">Foundation Repair</option><option value="other">Other</option></select></div>
+                    </div>
+                    <div class="form-group"><label for="city">City / ZIP Code *</label><input type="text" id="city" name="city" placeholder="Detroit, 48201" required></div>
+                    <div class="form-group"><label for="message">Describe Your Issue</label><textarea id="message" name="message" placeholder="Tell us about your water emergency..."></textarea></div>
+                    <div class="checkbox-group"><input type="checkbox" id="emergency" name="emergency"><label for="emergency">This is an active emergency — please respond immediately</label></div>
+                    <div class="checkbox-group"><input type="checkbox" id="insurance" name="insurance"><label for="insurance">I have insurance coverage / filing a claim</label></div>
+                    <button type="submit" class="form-submit">Get My Free Estimate</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col"><h4>MetroGuard Restoration</h4><p>Metro Detroit's premier emergency water damage response team. 24/7/365. On-site in 60 minutes or less.</p></div>
+                <div class="footer-col"><h4>Emergency Contact</h4><p><a href="tel:+13135551234">(313) 555-1234</a></p><p><a href="mailto:info@metroguardmi.com">info@metroguardmi.com</a></p></div>
+                <div class="footer-col"><h4>Service Areas</h4><p>Detroit • Dearborn • Warren • Troy<br>Sterling Heights • Royal Oak • Birmingham<br>Grosse Pointe • Livonia • Canton</p></div>
+                <div class="footer-col"><h4>Services</h4><p>Water Extraction • Basement Waterproofing<br>Sump Pumps • Mold Remediation<br>Foundation Repair</p></div>
+            </div>
+            <div class="footer-bottom"><p>© 2026 MetroGuard Restoration. All rights reserved. Detroit, Michigan.</p></div>
+        </div>
+    </footer>
+
+    <div class="floating-cta"><a href="tel:+13135551234" class="floating-btn">📞 Call Now</a></div>
+    <script>document.getElementById('quoteForm').addEventListener('submit', function(e) { e.preventDefault(); alert('Thank you! A MetroGuard specialist will contact you within 15 minutes.'); this.reset(); });</script>
+</body>
+</html>
