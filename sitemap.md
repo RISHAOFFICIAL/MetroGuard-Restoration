@@ -87,3 +87,15 @@ Beyond primary lead generation and AdSense, the platform will utilize these five
 | **Equipment Affiliate Commissions** | Affiliate links for DIY mitigation tools (dehumidifiers, sump pumps) within blog content. | 5-10% commission per sale | Fully hands-off (automated link tracking) |
 | **Contractor Training Course** | Selling access to a "MetroGuard Certified" digital course on lead conversion for technicians. | $497-$997 one-time fee | Fully hands-off (automated LMS access) |
 | **Related Trade Directory** | Monthly fees for vetted plumbers and electricians to be listed on "Partner" pages. | $50-$150/mo per listing | Fully hands-off (automated subscription billing) |
+
+---
+
+## 6. Lead Scoring & Routing Logic
+To support the 15-Minute Callback Guarantee, leads are triaged via the Emergency Intake Wizard using the following scoring tiers:
+
+| Tier | Score Range | Condition | Action / Routing |
+| :--- | :--- | :--- | :--- |
+| **Tier 1: CRITICAL** | 150+ | Standing water present + Homeowner is insured. | Immediate SMS dispatch to Ready-Response partner. **15-Minute Callback Guarantee applies.** |
+| **Tier 2: HIGH** | 81-149 | Active leak/emergency + Insured (but no standing water yet). | Standard routing to available partners via HubSpot. 1-hour target response. |
+| **Tier 3: STANDARD** | 41-80 | Info-seeking or No insurance present. | 3-day email nurture sequence + weekly professional tips. |
+| **Tier 4: COLD** | < 41 | Outside service area or invalid contact info. | Moved to "Cold" archive; monthly newsletter only. |

@@ -24,24 +24,28 @@
 ---
 
 ## 3. Brand Positioning Statement
-> "MetroGuard Restoration is the premier emergency response partner for Metro Detroit homeowners. We provide rapid, elite-level water damage mitigation and basement waterproofing services with a commitment to integrity, speed, and restoring peace of mind. When disaster strikes, we don't just fix homes; we protect your biggest investment."
+> "MetroGuard: The Fastest Response Network in Metro Detroit — Guaranteed Callback in 15 Minutes or the Lead is Free. We provide rapid, elite-level water damage mitigation and basement waterproofing services with a commitment to integrity, speed, and restoring peace of mind. When disaster strikes, we don't just fix homes; we protect your biggest investment."
 
 ---
 
 ## 4. Trust-Building Messaging Pillars
 
-### A. The 60-Minute Rapid Response
-*   **Message:** "On-site in 60 minutes or less. Guaranteed."
-*   **Why it works:** Emergency water damage is a race against the clock. Speed is the #1 conversion factor.
+### A. The 15-Minute Ready-Response Guarantee
+*   **Message:** "Guaranteed callback in 15 minutes or your lead is free. We are the fastest response network in Metro Detroit."
+*   **Why it works:** In a flood, every second counts. This guarantee removes the fear of waiting and positions us as the most reliable choice.
 
-### B. The "Insurance-First" Approach
+### B. The 60-Minute On-Site Promise
+*   **Message:** "On-site in 60 minutes or less. Guaranteed."
+*   **Why it works:** Emergency water damage is a race against the clock. Physical presence is the next critical step after the initial call.
+
+### C. The "Insurance-First" Approach
 *   **Message:** "We handle the insurance company so you don't have to. Direct billing and zero-hassle claims."
 *   **Why it works:** Homeowners are stressed about cost. Knowing the pros handle the paperwork removes a major barrier.
 
-### C. Local Heritage
+### D. Local Heritage
 *   **Message:** "Detroit Built. Detroit Dedicated. We know Metro Detroit basements because we live here."
 *   **Why it works:** Residents prefer local experts over national franchises that may use sub-contractors from outside the area.
 
-### D. Hospital-Grade Sanitization
+### E. Hospital-Grade Sanitization
 *   **Message:** "Safe for kids, pets, and your health. We use hospital-grade antimicrobials to ensure your home is truly clean."
 *   **Why it works:** Addresses the underlying fear of mold and health issues following water damage.

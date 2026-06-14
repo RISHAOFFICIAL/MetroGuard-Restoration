@@ -155,8 +155,8 @@ A flood is a crisis. Don’t panic—take action. MetroGuard Restoration is stan
 
 ---
 
-## 6. Quote Form Page Copy
-**Headline: Get Your Free, No-Obligation Rapid Estimate**
+## 6. Standard Quote Form (Non-Emergency)
+**Headline:** Get Your Free, No-Obligation Rapid Estimate
 **Body:**
 Ready to protect your home? Tell us a little about your project, and one of our Metro Detroit experts will contact you within 15 minutes to discuss your needs or schedule an on-site inspection.
 *   **Zero Pressure:** Professional advice, no sales tactics.
@@ -166,3 +166,41 @@ Ready to protect your home? Tell us a little about your project, and one of our 
 **Trust Messaging:**
 *   "Your information is 100% secure and never shared."
 *   "Over 500+ 5-Star Reviews in Metro Detroit."
+
+---
+
+## 7. Emergency Intake Wizard (The 15-Minute Flow)
+**Wizard Headline:** Start Your 15-Minute Emergency Response
+**Subheadline:** Answer 4 quick questions to alert our nearest rapid-response team.
+
+**Step 1: Type of Emergency**
+*   *Question:* What type of water emergency are you facing?
+*   *Options:*
+    *   Pipe Burst / Plumbing Leak
+    *   Storm Flooding / Basement Seepage
+    *   Sewage Backup
+    *   Foundation Leak / Crack
+
+**Step 2: Damage Severity**
+*   *Question:* Is there standing water in the property right now?
+*   *Options:*
+    *   Yes (Estimated depth: [Dropdown: 1-2 inches, 3-6 inches, 6+ inches])
+    *   No (Dampness/Moisture only)
+
+**Step 3: Coverage**
+*   *Question:* Do you have active homeowners or commercial insurance for this property?
+*   *Options:*
+    *   Yes
+    *   No
+    *   Not Sure / Need Help Checking
+
+**Step 4: Rapid Contact**
+*   *Question:* Where should we send the dispatch team?
+*   *Fields:*
+    *   Full Name
+    *   Mobile Phone (for 15-min callback)
+    *   Service ZIP Code
+
+**Post-Submission Messaging:**
+*   **Tier 1 (High Urgency):** "CRITICAL ALERT: Your emergency has been prioritized. A MetroGuard partner will call you at [Phone] within 15 minutes. Please keep your line clear."
+*   **Tier 2 (Standard):** "Thank you. A restoration specialist has received your info and will contact you shortly to schedule an inspection."

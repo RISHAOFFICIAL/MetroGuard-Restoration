@@ -31,48 +31,51 @@ This document details the revenue models and projected financial scenarios for t
 
 ## 2. Projected Monthly Revenue Scenarios
 
-Based on Metro Detroit search demand and average industry conversion rates (10-20% visitor-to-lead).
+Based on Metro Detroit search demand and the hybrid Tiered Partner model.
 
 ### Scenario 1: Conservative (Month 2-3)
-*   **Traffic:** 150 targeted visitors/mo.
-*   **Lead Volume:** 10 leads/mo.
-*   **Monetization:** PPL at $200/lead.
+*   **Partners:** 2 Tier-1 Contractors (PPL).
+*   **Lead Volume:** 10 leads/mo at $200/lead.
 *   **Monthly Revenue:** **$2,000**
-*   **Status:** Breaking even + minor profit.
+*   **Status:** Initial proof of concept.
 
 ### Scenario 2: Realistic (Month 6-12)
-*   **Traffic:** 500 targeted visitors/mo (SEO + Google Business Profile).
-*   **Lead Volume:** 40 leads/mo.
-*   **Monetization:** Hybrid (Retainer + PPL for overflow).
-*   **Monthly Revenue:** **$8,000**
+*   **Partners:** 3 Tier-2 (Ready-Response) + 2 Tier-1.
+*   **Fixed Revenue:** $1,200 (3 Retainers at $400).
+*   **Variable Revenue:** 30 leads (Tier-2) + 10 leads (Tier-1) = ~$7,000.
+*   **Success Fees:** 5 booked jobs at $100 = $500.
+*   **Monthly Revenue:** **$8,700**
 *   **Status:** Highly profitable digital asset.
 
 ### Scenario 3: Aggressive (Year 1+)
-*   **Traffic:** 1,000+ visitors/mo (Market dominance in all suburbs).
-*   **Lead Volume:** 100+ leads/mo.
-*   **Monetization:** Multi-contractor Retainers or Revenue Share.
-*   **Monthly Revenue:** **$20,000 – $35,000**
-*   **Status:** Scalable business model ready for expansion to other cities (Grand Rapids, Lansing).
+*   **Partners:** 10 Tier-2 (Ready-Response) covering all Metro Detroit ZIPs.
+*   **Fixed Revenue:** $5,000 (10 Retainers at $500).
+*   **Variable Revenue:** 100+ leads/mo (SEO + Ads) = $25,000.
+*   **Success Fees:** 20 booked jobs at $100 = $2,000.
+*   **Supplemental:** AdSense + Referral fees = $1,500.
+*   **Monthly Revenue:** **$33,500**
+*   **Status:** Market dominance.
 
 ---
 
 ## 3. Market Demand Benchmarks (Metro Detroit)
-*   **Avg. CPC for "Water Damage Detroit":** $40 - $120 (Paid ads are expensive, making our SEO leads highly valuable).
+*   **Avg. CPC for "Water Damage Detroit":** $40 - $120 (SEO leads are a massive cost-saving for partners).
 *   **Avg. Job Value:** $5,500.
-*   **Contractor Lifetime Value:** A contractor who closes 1 job a month from us makes $66k/year. They will happily pay $1k-$3k/mo for that flow.
+*   **Partner ROI:** A Tier-2 partner closing just 2 jobs a month from us nets $11k in revenue for a $500 investment—a 22x ROI.
 
-## 4. Tiered Partner Comparison (Model v2)
-To maximize revenue and partner commitment, we offer two distinct levels of partnership.
+---
 
-| Feature | Tier 1: Pay-Per-Lead | Tier 2: Ready-Response |
+## 4. Tiered Partner Model (Ready-Response Architecture)
+
+| Feature | Tier 1: Base (Pay-Per-Lead) | Tier 2: Ready-Response (Retainer) |
 | :--- | :--- | :--- |
-| **Commitment** | No contract / Pay-as-you-go | Monthly Retainer ($300-$500/mo) |
-| **Lead Routing** | Standard (Shared or Delayed) | Priority (First-Look SMS) |
-| **Guarantees** | None | 15-Minute Callback Guarantee |
-| **Lead Quality** | Raw Form/Phone Leads | AI-Triage / Intake Wizard Qualified |
-| **Success Fee** | Included in lead price | +$50-$100 per booked job |
-| **Territory** | Open / First-come-first-serve | Exclusive Zip Code Protection |
+| **Pricing** | $150 – $350 per qualified lead | $300 – $500/mo Retainer + $50-$100/job |
+| **Commitment** | Pay-as-you-go | Monthly Subscription |
+| **Territory** | Shared / Open | **Exclusive ZIP Code Protection** |
+| **Lead Routing** | Best-effort (Shared) | **Priority "First-Look" SMS** |
+| **Response Time** | No guarantee | **15-Minute Callback Guarantee** |
+| **Qualification** | Standard Capture | **Intake Wizard Priority Triage** |
 
 ## 5. Immediate Action Item
-**Phase 1 Focus:** Start with **Pay-Per-Lead** to "prove" the value to 2-3 local Metro Detroit contractors. Once they see the quality, transition them to a **Monthly Retainer** to lock in cash flow and scale to Tier 2.
+**Phase 1 Focus:** Sign 3 initial contractors to **Tier 1 (PPL)**. After 2 successful lead deliveries, pitch the **Tier 2 (Ready-Response)** upgrade to lock in exclusivity and the 15-minute guarantee.
 
