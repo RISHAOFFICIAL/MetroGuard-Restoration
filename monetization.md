@@ -61,5 +61,18 @@ Based on Metro Detroit search demand and average industry conversion rates (10-2
 *   **Avg. Job Value:** $5,500.
 *   **Contractor Lifetime Value:** A contractor who closes 1 job a month from us makes $66k/year. They will happily pay $1k-$3k/mo for that flow.
 
-## 4. Immediate Action Item
-**Phase 1 Focus:** Start with **Pay-Per-Lead** to "prove" the value to 2-3 local Metro Detroit contractors. Once they see the quality, transition them to a **Monthly Retainer** to lock in cash flow.
+## 4. Tiered Partner Comparison (Model v2)
+To maximize revenue and partner commitment, we offer two distinct levels of partnership.
+
+| Feature | Tier 1: Pay-Per-Lead | Tier 2: Ready-Response |
+| :--- | :--- | :--- |
+| **Commitment** | No contract / Pay-as-you-go | Monthly Retainer ($300-$500/mo) |
+| **Lead Routing** | Standard (Shared or Delayed) | Priority (First-Look SMS) |
+| **Guarantees** | None | 15-Minute Callback Guarantee |
+| **Lead Quality** | Raw Form/Phone Leads | AI-Triage / Intake Wizard Qualified |
+| **Success Fee** | Included in lead price | +$50-$100 per booked job |
+| **Territory** | Open / First-come-first-serve | Exclusive Zip Code Protection |
+
+## 5. Immediate Action Item
+**Phase 1 Focus:** Start with **Pay-Per-Lead** to "prove" the value to 2-3 local Metro Detroit contractors. Once they see the quality, transition them to a **Monthly Retainer** to lock in cash flow and scale to Tier 2.
+
