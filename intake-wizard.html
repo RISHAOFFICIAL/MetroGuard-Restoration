@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Intake — MetroGuard Restoration</title>
+    <meta name="description" content="MetroGuard's AI-powered emergency intake. Get connected to a specialist in 15 minutes or less.">
+    <style>
+        :root {
+            --navy: #1B365D;
+            --steel: #A2AAAD;
+            --white: #ffffff;
+            --orange: #FF5F00;
+            --green: #28a745;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--navy); color: var(--white); min-height: 100vh; display: flex; flex-direction: column; }
+        
+        header { padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .logo { font-size: 20px; font-weight: 700; }
+        .logo span { color: var(--orange); }
+        .header-tag { background: rgba(255,95,0,0.2); border: 1px solid var(--orange); color: var(--orange); padding: 6px 16px; border-radius: 50px; font-size: 13px; font-weight: 700; }
+        
+        .wizard-container { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 40px; max-width: 700px; margin: 0 auto; width: 100%; }
+        
+        .progress-bar { display: flex; gap: 8px; margin-bottom: 40px; justify-content: center; }
+        .step-dot { width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.2); transition: background 0.3s; }
+        .step-dot.active { background: var(--orange); }
+        .step-dot.done { background: var(--green); }
+        
+        .step { display: none; animation: fadeIn 0.4s ease; }
+        .step.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .step-label { color: var(--orange); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+        .step h2 { font-size: 32px; font-weight: 800; margin-bottom: 8px; line-height: 1.2; }
+        .step p { color: var(--steel); font-size: 16px; margin-bottom: 32px; }
+        
+        .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px; }
+        .option-btn { background: rgba(255,255,255,0.08); border: 2px solid rgba(255,255,255,0.15); border-radius: 12px; padding: 24px 20px; text-align: left; cursor: pointer; transition: all 0.2s; color: var(--white); font-size: 16px; font-weight: 600; }
+        .option-btn:hover { background: rgba(255,95,0,0.2); border-color: var(--orange); }
+        .option-btn.selected { background: var(--orange); border-color: var(--orange); }
+        .option-btn .icon { font-size: 28px; display: block; margin-bottom: 8px; }
+        
+        .yes-no-row { display: flex; gap: 16px; margin-bottom: 32px; }
+        .yes-no-btn { flex: 1; background: rgba(255,255,255,0.08); border: 2px solid rgba(255,255,255,0.15); border-radius: 12px; padding: 20px; text-align: center; cursor: pointer; transition: all 0.2s; color: var(--white); font-size: 18px; font-weight: 700; }
+        .yes-no-btn:hover { background: rgba(255,95,0,0.2); border-color: var(--orange); }
+        .yes-no-btn.selected { background: var(--orange); border-color: var(--orange); }
+        
+        input[type="text"], input[type="email"], input[type="tel"], select, textarea {
+            width: 100%; padding: 16px; border: 2px solid rgba(255,255,255,0.15); border-radius: 12px; background: rgba(255,255,255,0.08); color: var(--white); font-size: 18px; margin-bottom: 16px; transition: border-color 0.2s;
+        }
+        input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.4); }
+        input:focus, select:focus, textarea:focus { outline: none; border-color: var(--orange); background: rgba(255,255,0,0.05); }
+        
+        select option { background: var(--navy); color: var(--white); }
+        
+        .form-group { margin-bottom: 8px; }
+        .form-label { font-size: 14px; color: var(--steel); margin-bottom: 6px; display: block; }
+        
+        .nav-row { display: flex; gap: 16px; margin-top: 24px; }
+        .btn-back { background: rgba(255,255,255,0.1); border: 2px solid rgba(255,255,255,0.2); color: var(--white); padding: 16px 24px; border-radius: 10px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+        .btn-back:hover { background: rgba(255,255,255,0.2); }
+        .btn-next { background: var(--orange); border: none; color: var(--white); padding: 16px 32px; border-radius: 10px; font-size: 16px; font-weight: 700; cursor: pointer; transition: background 0.2s; flex: 1; }
+        .btn-next:hover { background: #e54a00; }
+        .btn-next:disabled { background: rgba(255,255,255,0.2); cursor: not-allowed; }
+        
+        /* Result screens */
+        .result-screen { text-align: center; padding: 40px; }
+        .result-badge { display: inline-block; padding: 12px 32px; border-radius: 50px; font-size: 18px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 24px; }
+        .result-badge.emergency { background: var(--orange); color: white; animation: pulse 2s infinite; }
+        .result-badge.standard { background: rgba(255,255,255,0.2); color: white; }
+        @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.75; } }
+        .result-screen h2 { font-size: 36px; margin-bottom: 16px; }
+        .result-screen p { color: var(--steel); font-size: 18px; margin-bottom: 32px; max-width: 500px; margin-left: auto; margin-right: auto; }
+        .result-icon { font-size: 64px; margin-bottom: 20px; }
+        
+        .contact-confirm { background: rgba(255,255,255,0.08); border-radius: 16px; padding: 32px; margin-bottom: 24px; }
+        .contact-confirm h3 { font-size: 20px; margin-bottom: 16px; color: var(--orange); }
+        .contact-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 16px; }
+        .contact-row:last-child { border-bottom: none; }
+        .contact-row .label { color: var(--steel); }
+        .contact-row .value { font-weight: 600; }
+        
+        footer { padding: 20px 40px; text-align: center; color: var(--steel); font-size: 13px; border-top: 1px solid rgba(255,255,255,0.1); }
+
+        @media (max-width: 600px) {
+            .options-grid { grid-template-columns: 1fr; }
+            .yes-no-row { flex-direction: column; }
+            .wizard-container { padding: 24px; }
+            .step h2 { font-size: 26px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">Metro<span>Guard</span> Restoration</div>
+    <div class="header-tag">🚨 15-Minute Guarantee</div>
+</header>
+
+<div class="wizard-container">
+    <!-- Progress dots -->
+    <div class="progress-bar" id="progressBar">
+        <div class="step-dot active" id="dot1"></div>
+        <div class="step-dot" id="dot2"></div>
+        <div class="step-dot" id="dot3"></div>
+        <div class="step-dot" id="dot4"></div>
+        <div class="step-dot" id="dot5"></div>
+    </div>
+
+    <!-- STEP 1: Emergency Type -->
+    <div class="step active" id="step1">
+        <div class="step-label">Step 1 of 4</div>
+        <h2>What's the emergency?</h2>
+        <p>Select the type of water damage you're experiencing.</p>
+        <div class="options-grid">
+            <button class="option-btn" onclick="selectOption('emergency_type', 'burst_pipe')">
+                <span class="icon">🔧</span>
+                Burst / Broken Pipe
+            </button>
+            <button class="option-btn" onclick="selectOption('emergency_type', 'storm_flooding')">
+                <span class="icon">🌧️</span>
+                Storm / Heavy Rain Flooding
+            </button>
+            <button class="option-btn" onclick="selectOption('emergency_type', 'sewage_backup')">
+                <span class="icon">🚰</span>
+                Sewage / Drain Backup
+            </button>
+            <button class="option-btn" onclick="selectOption('emergency_type', 'foundation_leak')">
+                <span class="icon">🏠</span>
+                Foundation / Structure Leak
+            </button>
+            <button class="option-btn" onclick="selectOption('emergency_type', 'water_heater')">
+                <span class="icon">🔺</span>
+                Water Heater Failure
+            </button>
+            <button class="option-btn" onclick="selectOption('emergency_type', 'other')">
+                <span class="icon">💧</span>
+                Other / Not Sure
+            </button>
+        </div>
+        <div class="nav-row">
+            <button class="btn-next" id="btnStep1" onclick="nextStep(1)" disabled>Continue →</button>
+        </div>
+    </div>
+
+    <!-- STEP 2: Standing Water -->
+    <div class="step" id="step2">
+        <div class="step-label">Step 2 of 4</div>
+        <h2>Is there standing water?</h2>
+        <p>Standing water means the situation is more urgent and requires immediate response.</p>
+        <div class="yes-no-row">
+            <button class="yes-no-btn" onclick="selectYesNo('standing_water', 'yes')">Yes — Water is standing</button>
+            <button class="yes-no-btn" onclick="selectYesNo('standing_water', 'no')">No — Moisture only</button>
+        </div>
+        <div class="step" id="waterHeightSection" style="display:none;">
+            <p style="color:var(--steel);margin-bottom:12px;font-size:15px;">How high is the water?</p>
+            <div class="options-grid">
+                <button class="option-btn" onclick="selectOption('water_height', 'under_6')">Under 6 inches</button>
+                <button class="option-btn" onclick="selectOption('water_height', '6_to_12')">6 to 12 inches</button>
+                <button class="option-btn" onclick="selectOption('water_height', 'over_12')">Over 12 inches</button>
+                <button class="option-btn" onclick="selectOption('water_height', 'unknown')">Not sure / Can't tell</button>
+            </div>
+        </div>
+        <div class="nav-row">
+            <button class="btn-back" onclick="prevStep(2)">← Back</button>
+            <button class="btn-next" id="btnStep2" onclick="nextStep(2)" disabled>Continue →</button>
+        </div>
+    </div>
+
+    <!-- STEP 3: Insurance -->
+    <div class="step" id="step3">
+        <div class="step-label">Step 3 of 4</div>
+        <h2>Do you have insurance?</h2>
+        <p>Having insurance coverage typically speeds up the claims process and reduces your out-of-pocket cost.</p>
+        <div class="yes-no-row">
+            <button class="yes-no-btn" onclick="selectYesNo('insurance', 'yes')">Yes — Insured</button>
+            <button class="yes-no-btn" onclick="selectYesNo('insurance', 'no')">No — Uninsured</button>
+        </div>
+        <div class="yes-no-row" style="margin-top:16px;">
+            <button class="yes-no-btn" onclick="selectYesNo('insurance', 'unsure')" style="flex:1;">Not Sure / Need to Check</button>
+        </div>
+        <div class="nav-row">
+            <button class="btn-back" onclick="prevStep(3)">← Back</button>
+            <button class="btn-next" id="btnStep3" onclick="nextStep(3)" disabled>Continue →</button>
+        </div>
+    </div>
+
+    <!-- STEP 4: Contact Info -->
+    <div class="step" id="step4">
+        <div class="step-label">Step 4 of 4</div>
+        <h2>Where should we send help?</h2>
+        <p>A MetroGuard specialist will call you within 15 minutes to confirm your service request.</p>
+        <div class="form-group">
+            <label class="form-label">Your Name</label>
+            <input type="text" id="contactName" placeholder="Full name" oninput="validateContact()">
+        </div>
+        <div class="form-group">
+            <label class="form-label">Phone Number *</label>
+            <input type="tel" id="contactPhone" placeholder="(313) 555-0000" oninput="validateContact()">
+        </div>
+        <div class="form-group">
+            <label class="form-label">Email (optional)</label>
+            <input type="email" id="contactEmail" placeholder="you@email.com">
+        </div>
+        <div class="form-group">
+            <label class="form-label">Service ZIP Code *</label>
+            <input type="text" id="contactZip" placeholder="e.g. 48201" maxlength="5" oninput="validateContact()">
+        </div>
+        <div class="form-group">
+            <label class="form-label">Describe briefly what happened</label>
+            <textarea id="contactNotes" rows="2" placeholder="e.g. Sump pump failed overnight, basement is flooded"></textarea>
+        </div>
+        <div class="nav-row">
+            <button class="btn-back" onclick="prevStep(4)">← Back</button>
+            <button class="btn-next" id="btnStep4" onclick="showResult()" disabled>Get My Specialist Call →</button>
+        </div>
+    </div>
+
+    <!-- RESULT: TIER 1 EMERGENCY -->
+    <div class="step result-screen" id="resultEmergency">
+        <div class="result-icon">🚨</div>
+        <div class="result-badge emergency">Tier 1 — Emergency Priority</div>
+        <h2>Specialist Dispatched</h2>
+        <p>A MetroGuard specialist will call you within <strong>15 minutes</strong> at <span id="resultPhone"></span>.</p>
+        <p style="margin-top:16px;font-size:16px;">Your information has been routed to our top-rated emergency contractor in your area.</p>
+        <div class="contact-confirm" style="margin-top:24px;">
+            <h3>Your Request Details</h3>
+            <div class="contact-row"><span class="label">Issue:</span><span class="value" id="confirmIssue">—</span></div>
+            <div class="contact-row"><span class="label">Standing Water:</span><span class="value" id="confirmWater">—</span></div>
+            <div class="contact-row"><span class="label">Insurance:</span><span class="value" id="confirmInsurance">—</span></div>
+            <div class="contact-row"><span class="label">ZIP Code:</span><span class="value" id="confirmZip">—</span></div>
+            <div class="contact-row"><span class="label">Your Name:</span><span class="value" id="confirmName">—</span></div>
+        </div>
+        <p style="font-size:14px;color:var(--steel);">If you don't receive a call within 15 minutes, call us directly: <strong>(313) 555-1234</strong></p>
+    </div>
+
+    <!-- RESULT: STANDARD LEAD -->
+    <div class="step result-screen" id="resultStandard">
+        <div class="result-icon">✅</div>
+        <div class="result-badge standard">Standard Priority</div>
+        <h2>Request Received</h2>
+        <p>A MetroGuard specialist will contact you at <span id="resultPhoneStd"></span> within <strong>1 hour</strong> to schedule your inspection.</p>
+        <div class="contact-confirm" style="margin-top:24px;">
+            <h3>Your Request Details</h3>
+            <div class="contact-row"><span class="label">Issue:</span><span class="value" id="confirmIssueStd">—</span></div>
+            <div class="contact-row"><span class="label">Insurance:</span><span class="value" id="confirmInsuranceStd">—</span></div>
+            <div class="contact-row"><span class="label">ZIP Code:</span><span class="value" id="confirmZipStd">—</span></div>
+            <div class="contact-row"><span class="label">Your Name:</span><span class="value" id="confirmNameStd">—</span></div>
+        </div>
+        <p style="font-size:14px;color:var(--steel);">Need immediate help? Call us: <strong>(313) 555-1234</strong></p>
+    </div>
+</div>
+
+<footer>
+    MetroGuard Restoration — Metro Detroit's Fastest Response Network<br>
+    Emergency Line: (313) 555-1234 · metroguardmi.com
+</footer>
+
+<script>
+    // State
+    const state = {
+        emergency_type: '',
+        standing_water: '',
+        water_height: '',
+        insurance: '',
+        name: '',
+        phone: '',
+        email: '',
+        zip: '',
+        notes: ''
+    };
+
+    // Score tracking
+    let score = 0;
+
+    function selectOption(field, value) {
+        state[field] = value;
+        // Highlight selected
+        const btns = event.target.closest('.options-grid').querySelectorAll('.option-btn');
+        btns.forEach(b => b.classList.remove('selected'));
+        event.target.classList.add('selected');
+        // Enable next
+        const step = field === 'water_height' ? 2 : parseInt(event.target.closest('.step').id.replace('step',''));
+        document.getElementById('btnStep'+step).disabled = false;
+        // If water height selected, enable next
+        if (field === 'water_height') {
+            document.getElementById('btnStep2').disabled = false;
+        }
+    }
+
+    function selectYesNo(field, value) {
+        state[field] = value;
+        const btns = event.target.closest('.yes-no-row').querySelectorAll('.yes-no-btn');
+        btns.forEach(b => b.classList.remove('selected'));
+        event.target.classList.add('selected');
+        
+        // Show water height question if "yes" selected for standing water
+        if (field === 'standing_water' && value === 'yes') {
+            document.getElementById('waterHeightSection').style.display = 'block';
+        } else if (field === 'standing_water' && value === 'no') {
+            document.getElementById('waterHeightSection').style.display = 'none';
+            state.water_height = 'none';
+        }
+        
+        // Enable next
+        const stepNum = parseInt(event.target.closest('.step').id.replace('step',''));
+        document.getElementById('btnStep'+stepNum).disabled = false;
+    }
+
+    function validateContact() {
+        const name = document.getElementById('contactName').value.trim();
+        const phone = document.getElementById('contactPhone').value.trim();
+        const zip = document.getElementById('contactZip').value.trim();
+        const valid = name.length > 0 && phone.length >= 10 && zip.length === 5;
+        document.getElementById('btnStep4').disabled = !valid;
+    }
+
+    function calculateScore() {
+        score = 0;
+        // Standing water = +100
+        if (state.standing_water === 'yes') score += 100;
+        // Emergency type (burst pipe, sewage = +50)
+        if (state.emergency_type === 'burst_pipe' || state.emergency_type === 'sewage_backup') score += 50;
+        // Insurance = +50
+        if (state.insurance === 'yes') score += 50;
+        // Valid Metro Detroit ZIP would add +30 (simplified)
+        const detroitZips = ['482','481','480'];
+        if (detroitZips.some(z => state.zip.startsWith(z))) score += 30;
+        return score;
+    }
+
+    function showResult() {
+        state.name = document.getElementById('contactName').value.trim();
+        state.phone = document.getElementById('contactPhone').value.trim();
+        state.email = document.getElementById('contactEmail').value.trim();
+        state.zip = document.getElementById('contactZip').value.trim();
+        state.notes = document.getElementById('contactNotes').value.trim();
+
+        const finalScore = calculateScore();
+        const isEmergency = finalScore >= 150 || (state.standing_water === 'yes' && state.insurance === 'yes');
+
+        // Populate confirmation fields
+        const issueLabels = {
+            'burst_pipe': 'Burst/Broken Pipe',
+            'storm_flooding': 'Storm Flooding',
+            'sewage_backup': 'Sewage Backup',
+            'foundation_leak': 'Foundation Leak',
+            'water_heater': 'Water Heater Failure',
+            'other': 'Other'
+        };
+        const insuranceLabels = { 'yes': 'Yes — Insured', 'no': 'No — Uninsured', 'unsure': 'Not Sure' };
+
+        if (isEmergency) {
+            document.getElementById('resultPhone').textContent = state.phone;
+            document.getElementById('confirmIssue').textContent = issueLabels[state.emergency_type] || '—';
+            document.getElementById('confirmWater').textContent = state.standing_water === 'yes' ? 'Yes' : 'No';
+            document.getElementById('confirmInsurance').textContent = insuranceLabels[state.insurance] || '—';
+            document.getElementById('confirmZip').textContent = state.zip;
+            document.getElementById('confirmName').textContent = state.name;
+            showStep('resultEmergency');
+        } else {
+            document.getElementById('resultPhoneStd').textContent = state.phone;
+            document.getElementById('confirmIssueStd').textContent = issueLabels[state.emergency_type] || '—';
+            document.getElementById('confirmInsuranceStd').textContent = insuranceLabels[state.insurance] || '—';
+            document.getElementById('confirmZipStd').textContent = state.zip;
+            document.getElementById('confirmNameStd').textContent = state.name;
+            showStep('resultStandard');
+        }
+
+        // Log to console (in production this would POST to Make.com webhook)
+        console.log('MetroGuard Intake Lead:', { ...state, score: finalScore, tier: isEmergency ? 'TIER1' : 'STANDARD' });
+    }
+
+    function showStep(stepId) {
+        document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+        document.getElementById(stepId).classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function nextStep(current) {
+        // Update progress dots
+        for (let i = 1; i <= current; i++) {
+            document.getElementById('dot'+i).classList.remove('active');
+            document.getElementById('dot'+i).classList.add('done');
+        }
+        document.getElementById('dot'+(current+1)).classList.add('active');
+        showStep('step'+(current+1));
+    }
+
+    function prevStep(current) {
+        for (let i = current; i <= 4; i++) {
+            document.getElementById('dot'+i).classList.remove('done','active');
+        }
+        document.getElementById('dot'+(current-1)).classList.add('active');
+        showStep('step'+(current-1));
+    }
+</script>
+
+</body>
+</html>
